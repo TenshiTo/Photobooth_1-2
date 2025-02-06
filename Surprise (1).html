@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surprise Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #f0f0f0;
+        }
+
+        #surprise-button {
+            padding: 10px 20px;
+            font-size: 20px;
+            cursor: pointer;
+        }
+
+        #surprise-message {
+            display: none;
+            font-size: 24px;
+            color: red;
+        }
+
+        #confetti-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+    </style>
+</head>
+<body>
+    <button id="surprise-button" onclick="showSurprise()">Click Me for a Surprise!</button>
+    <p id="surprise-message" align="center">HAHAHAHAHAHAHAHAH TANGINAAAAA</p>
+    <div id="confetti-container"></div>
+    <audio id="party-sound" preload="auto" src="https://us-tuna-sounds-files.voicemod.net/cfc55e01-49a9-474e-8bd6-66ee02b28f4d-1657629308204.mp3"></audio>
+
+    <script>
+        function showSurprise() {
+            const button = document.getElementById("surprise-button");
+            const message = document.getElementById("surprise-message");
+            const confettiContainer = document.getElementById("confetti-container");
+            const partySound = document.getElementById("party-sound");
+
+           
+            partySound.play();          
+            button.style.display = "none";
+            message.style.display = "block";
+            confettiContainer.innerHTML = "";
+            confetti({
+                particleCount: 200,
+                spread: 100,
+                origin: { y: 0.6 },
+            });
+        }
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.0.1"></script>
+</body>
+</html>
